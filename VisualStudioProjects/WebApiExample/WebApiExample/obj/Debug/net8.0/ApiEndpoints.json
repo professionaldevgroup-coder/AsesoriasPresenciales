@@ -1,0 +1,43 @@
+[
+  {
+    "ContainingType": "WebApiExample.Controllers.VehicleController",
+    "Method": "CreateVehicule",
+    "RelativePath": "api/Vehicle/CreateVehicule",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "brand",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "doorAmout",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "amountPassagers",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "model",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "color",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
