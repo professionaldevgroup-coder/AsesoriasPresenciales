@@ -1,0 +1,61 @@
+# Compilación
+bin/
+obj/
+out/
+[Bb]uild/
+[Ll]og/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+
+# Archivos de usuario y configuración local
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+
+# Archivos de prueba
+TestResult*/
+[TestResults]/
+*.VisualState.xml
+*.vsp
+*.vspscc
+
+# Archivos de paquetes NuGet
+*.nupkg
+*.snupkg
+# Evita incluir paquetes descargados
+packages/
+# Pero permite el archivo de configuración
+!packages/build/
+*.nuget.props
+*.nuget.targets
+
+# Dependencias de Rider / JetBrains
+.idea/
+
+# Archivos generados
+*.log
+*.tlog
+*.cache
+*.ilk
+*.pdb
+*.mdb
+
+# Archivos de publicación
+publish/
+*.Publish.xml
+
+# Archivos de cobertura de código
+*.coverage
+*.coveragexml
+
+# Archivos de OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
