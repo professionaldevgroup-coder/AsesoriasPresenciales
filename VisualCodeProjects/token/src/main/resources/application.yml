@@ -1,0 +1,11 @@
+server:
+  port: 8080
+
+jwt:
+  secret: "1LFqwyCRwBlfKkkJ3G3nY9C4YYSFqNvJUlnpn1UxWf8="
+  expiration-minutes: 60
+
+spring:
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
