@@ -21,11 +21,10 @@ public class VehicleController {
 
     private final VehicleRepository vehicleRepository;
 
-    @Autowired
     public VehicleController(VehicleRepository vehicleRepository) {
         this.vehicleRepository = vehicleRepository;
     }
-
+    
     @GetMapping("/getAllVehicles")
     @Operation(summary = "Get all vehicles", description = "Retrieves a list of all vehicles in the system")
     public ResponseEntity<List<VehicleDTO>> getAllVehicles() {
@@ -56,8 +55,15 @@ public class VehicleController {
 
     @PostMapping
     @Operation(summary = "Create a new vehicle", description = "Adds a new vehicle to the system")
-    public ResponseEntity<Vehicles> createVehicle(@RequestBody Vehicles vehicle) {
-        return ResponseEntity.ok(vehicleRepository.save(vehicle));
+    public ResponseEntity<?> createVehicle(@RequestBody Vehicles vehicle) {
+        try {
+             return ResponseEntity.ok(vehicleRepository.save(vehicle));
+        } catch (Exception e) {
+            return ResponseEntity
+                .internalServerError()
+                .body("Ocurrió un error en el servidor, intenta más tarde.");
+        }
+       
     }
 
     @PutMapping("/{id}")
