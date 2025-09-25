@@ -1,11 +1,12 @@
 package com.cardealership.cardealership.controllers;
 
+import com.cardealership.cardealership.dto.CreateVehicleDTO;
 import com.cardealership.cardealership.dto.VehicleDTO;
 import com.cardealership.cardealership.models.Vehicles;
 import com.cardealership.cardealership.infrastructure.VehicleRepository;
+import com.cardealership.cardealership.Services.VehicleService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -20,9 +21,11 @@ import java.util.stream.Collectors;
 public class VehicleController {
 
     private final VehicleRepository vehicleRepository;
+    private final VehicleService vehicleService;
 
-    public VehicleController(VehicleRepository vehicleRepository) {
+    public VehicleController(VehicleRepository vehicleRepository, VehicleService vehicleService) {
         this.vehicleRepository = vehicleRepository;
+        this.vehicleService = vehicleService;
     }
     
     @GetMapping("/getAllVehicles")
@@ -55,15 +58,16 @@ public class VehicleController {
 
     @PostMapping
     @Operation(summary = "Create a new vehicle", description = "Adds a new vehicle to the system")
-    public ResponseEntity<?> createVehicle(@RequestBody Vehicles vehicle) {
+    public ResponseEntity<?> createVehicle(@RequestBody CreateVehicleDTO createDTO) {
         try {
-             return ResponseEntity.ok(vehicleRepository.save(vehicle));
+            // Aquí irá la lógica para convertir CreateVehicleDTO a Vehicle
+            Vehicles vehicle = vehicleService.createVehicle(createDTO);
+            return ResponseEntity.ok(new VehicleDTO(vehicle));
         } catch (Exception e) {
             return ResponseEntity
                 .internalServerError()
-                .body("Ocurrió un error en el servidor, intenta más tarde.");
+                .body("Ocurrió un error al crear el vehículo: " + e.getMessage());
         }
-       
     }
 
     @PutMapping("/{id}")
