@@ -41,6 +41,11 @@ public class VehicleService {
         var trim = trimRepository.findById(dto.trimId())
             .orElseThrow(() -> new IllegalArgumentException("Trim no encontrado"));
 
+        if(model.getId() != (trim.getModel().getId())){
+            throw new IllegalArgumentException("El modelo no es el mismo que esta asignado al Trim, vuelva a intentarlo");
+        }
+
+
         // Crear nuevo vehículo
         var vehicle = new Vehicles(
             dto.vin(),

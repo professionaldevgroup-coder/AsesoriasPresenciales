@@ -56,7 +56,7 @@ public class VehicleController {
         return ResponseEntity.ok(vehicles);
     }
 
-    @PostMapping
+    @PostMapping("/createVehicle")
     @Operation(summary = "Create a new vehicle", description = "Adds a new vehicle to the system")
     public ResponseEntity<?> createVehicle(@RequestBody CreateVehicleDTO createDTO) {
         try {
